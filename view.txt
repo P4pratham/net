@@ -1,0 +1,103 @@
+********list**********
+@using BOL
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<table>
+    @{
+
+        string name = "IACSD";
+        List<Doctor> docters = ViewData["doclist"] as List<Doctor>;
+
+        foreach (Doctor doc in docters)
+        {
+    <tr>
+        <td><i><b><u>@doc.Name</u></b></i></td>
+        <td><i><b><u>@doc.Hospital</u></b></i></td>
+        <td><i><b><u>@doc.Speciality</u></b></i></td>
+        <td><i><b><u>@doc.Fee</u></b></i>  </td>
+        <td><i><b><u>@doc.BirthDate</u></b></i></td>
+
+        <td>@Html.ActionLink("Delete", "Delete",new { @doc.userName})</td>
+        <td>@Html.ActionLink("Update", "Update", new { @doc.userName })</td>
+    </tr>
+}
+
+    }
+    </table>
+*******login*********
+
+@{
+    ViewBag.Title = "login";
+}
+
+<h2>login</h2>
+<h2>SignIn</h2>
+
+<h3>Please Enter Your Credentails...</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <p>
+        <label>Username:</label>
+        <input name="username" />
+    </p>
+    <p>
+        <label>Password:</label>
+        <input name="password" type="password" />
+    </p>
+    <input type="submit" value="Log in" />
+}
+
+@Html.ActionLink("Register", "Register")
+@Html.ActionLink("List", "List")
+
+
+********register**********
+
+@{
+    /**/
+
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <p>
+        <label>Name:</label>
+        <input name="name" />
+    </p>
+
+    <p>
+        <label>Speciality:</label>
+        <input name="speciality" />
+    </p>
+    <p>
+        <label>hospital:</label>
+        <input name="hospital" />
+    </p>
+    <p>
+        <label>birth date:</label>
+        <input name="birthDate" />
+    </p>
+    <p>
+        <label>Fee:</label>
+        <input name="fee" type="number" />
+    </p>
+    <p>
+        <label>username:</label>
+        <input name="username" />
+    </p>
+    <p>
+        <label>password:</label>
+        <input name="password" type="password" />
+    </p>
+    <input type="submit" value="Log in" />
+}
